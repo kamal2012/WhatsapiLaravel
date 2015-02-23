@@ -11,11 +11,15 @@
         {
             "name": "Jonathan Williamson",
             "email": "jonnywilliamson@gmail.com"
+        },
+        {
+            "name": "Benjamín Martínez Mateos",
+            "email": "bmxamin@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*",
+        "illuminate/support": "5.0.*",
         "thomasvargiu/tmv-whatsapi": "0.*",
         "mgp25/whatsapi": "dev-master"
     },
