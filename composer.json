@@ -16,8 +16,8 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "5.*",
-        "thomasvargiu/tmv-whatsapi": "dev-master",
-        "mgp25/whatsapi": "dev-master"
+        "thomasvargiu/tmv-whatsapi": "o.*",
+        "mgp25/whatsapi": "@dev"
     },
     "autoload": {
         "psr-4": {
