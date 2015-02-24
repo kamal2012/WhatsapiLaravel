@@ -1,5 +1,5 @@
 {
-    "name": "xaamin/wapi",
+    "name": "xaamin/whatsapilaravel",
     "description": "A laravel Wrapper for WhatsApi",
     "license": "MIT",
     "keywords": [
@@ -8,10 +8,6 @@
         "laravel"
     ],
     "authors": [
-        {
-            "name": "Jonathan Williamson",
-            "email": "jonnywilliamson@gmail.com"
-        },
         {
             "name": "Benjamín Martínez Mateos",
             "email": "bmxamin@gmail.com"
@@ -25,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Williamson\\Larawhatsapi\\": "src/"
+            "Xaamin\\Whatsapilaravel\\": "src/"
         }
     },
     "minimum-stability": "dev",

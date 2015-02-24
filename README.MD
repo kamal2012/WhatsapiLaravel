@@ -75,12 +75,12 @@ At a later stage a registration feature using this package might become availabl
 4. Require the needed packages (enter each of these lines as a command).
 
         composer require mgp25/whatsapi:@dev
-        composer require williamson/larawhatsapi:dev-master --update-no-dev
+        composer require williamson/whatsapi-laravel:dev-master --update-no-dev
 
 
 5. Now we need to create the config file that will allow the user to very easily add all their numbers/names/password/identities.
 
-        php artisan config:publish williamson/larawhatsapi
+        php artisan config:publish williamson/whatsapi-laravel
 
 6. Finally, we need to tell Laravel that there is a LaraWhatsApi ServiceProvider to be used when Laravel starts up. In the project folder, edit the `app/config/app.php` file. Find the end of the providers array, it should look like this:
 
@@ -93,13 +93,13 @@ At a later stage a registration feature using this package might become availabl
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Williamson\Larawhatsapi\LaraWhatsapiServiceProvider'
+        'Williamson\WhatsapiLaravel\WhatsapiLaravelServiceProvider'
 
 
 ##Configuration
 Now everything has been installed, you just need to add your Whatsapp account details into the config file. 
 
-There will now be a personal config file created for you in ```whatsapidemoproject/app/config/packages/williamson/larawhatsapi```.
+There will now be a personal config file created for you in ```whatsapidemoproject/app/config/packages/williamson/whatsapi-laravel```.
 
 Open this file and edit the details with your account info. 
 
