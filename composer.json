@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Xaamin\\Whatsapilaravel\\": "src/"
+            "Xaamin\\WhatsapiLaravel\\": "src/"
         }
     },
     "minimum-stability": "dev",
