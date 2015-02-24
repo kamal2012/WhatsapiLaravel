@@ -33,6 +33,10 @@ class WhatsapiServiceProvider extends ServiceProvider {
         {
             $loader->alias('WA', 'Xaamin\WhatsapiLaravel\Facades\WhatsapiFacade');
         }
+
+        $this->publishes([
+            __DIR__.'/Config/whatsapi-laravel.php' => config_path('whatsapi-laravel.php'),
+        ]);
     }
 
     /**
@@ -46,11 +50,11 @@ class WhatsapiServiceProvider extends ServiceProvider {
         $this->app->bindShared('Tmv\WhatsApi\Entity\Identity', function ()
         {
             //Setup Account details.
-            $account   = Config::get("whatsapi-laravel::account");
-            $nickname  = Config::get("whatsapi-laravel::accounts.$account.nickname");
-            $number    = Config::get("whatsapi-laravel::accounts.$account.number");
-            $password  = Config::get("whatsapi-laravel::accounts.$account.password");
-            $userIdent = Config::get("whatsapi-laravel::accounts.$account.identity");
+            $account   = Config::get("whatsapilaravel::account");
+            $nickname  = Config::get("whatsapilaravel::accounts.$account.nickname");
+            $number    = Config::get("whatsapilaravel::accounts.$account.number");
+            $password  = Config::get("whatsapilaravel::accounts.$account.password");
+            $userIdent = Config::get("whatsapilaravel::accounts.$account.identity");
 
             // Initializing client
             // Creating a service to retrieve phone info
@@ -61,9 +65,10 @@ class WhatsapiServiceProvider extends ServiceProvider {
             // Injecting phone properties
             $localizationService->injectPhoneProperties($phone);
             // Creating identity
-            $identity = 
-                new Identity()
-                ->setPhone($phone)
+            $identity = new Identity();
+
+            $identity
+            ->setPhone($phone)
                 ->setNickname($nickname)
                 ->setPassword($password)
                 ->setIdentityToken($userIdent);
@@ -75,10 +80,10 @@ class WhatsapiServiceProvider extends ServiceProvider {
         //Set up how the create TMV's Client Object when one is asked to be created (which needs the Identity)
         $this->app->bindShared('Tmv\WhatsApi\Client', function ()
         {
-            $debug             = Config::get("whatsapi-laravel::debug");
-            $account           = Config::get("whatsapi-laravel::account");
-            $number            = Config::get("whatsapi-laravel::accounts.$account.number");
-            $nextChallengeFile = Config::get("whatsapi-laravel::challenge-dir") . "/" . $number . "-next-challenge.dat";
+            $debug             = Config::get("whatsapilaravel::debug");
+            $account           = Config::get("whatsapilaravel::account");
+            $number            = Config::get("whatsapilaravel::accounts.$account.number");
+            $nextChallengeFile = Config::get("whatsapilaravel::challenge-dir") . "/" . $number . "-next-challenge.dat";
 
             $identity = App::make('Tmv\WhatsApi\Entity\Identity');
             // Initializing client
@@ -144,7 +149,7 @@ class WhatsapiServiceProvider extends ServiceProvider {
         //Which concret implementation will we use when an SMSInterface is asked for? User can pick in the config file.
         $this->app->bindShared('Xaamin\WhatsapiLaravel\Repository\SMSMessageInterface', function ()
         {
-            $fork = strtoupper(Config::get('whatsapi-laravel::fork'));
+            $fork = strtoupper(Config::get('whatsapilaravel::fork'));
             
             switch ($fork)
             {
@@ -162,12 +167,12 @@ class WhatsapiServiceProvider extends ServiceProvider {
         $this->app->bindShared('WhatsProt', function ()
         {
             //Setup Account details.
-            $debug     = Config::get("whatsapi-laravel::debug");
-            $account   = Config::get("whatsapi-laravel::account");
-            $nickname  = Config::get("whatsapi-laravel::accounts.$account.nickname");
-            $number    = Config::get("whatsapi-laravel::accounts.$account.number");
-            $userIdent = Config::get("whatsapi-laravel::accounts.$account.identity");
-            $nextChallengeFile = Config::get("whatsapi-laravel::challenge-dir") . "/" . $number . "-NextChallenge.dat";
+            $debug     = Config::get("whatsapilaravel::debug");
+            $account   = Config::get("whatsapilaravel::account");
+            $nickname  = Config::get("whatsapilaravel::accounts.$account.nickname");
+            $number    = Config::get("whatsapilaravel::accounts.$account.number");
+            $userIdent = Config::get("whatsapilaravel::accounts.$account.identity");
+            $nextChallengeFile = Config::get("whatsapilaravel::challenge-dir") . "/" . $number . "-NextChallenge.dat";
 
             $whatsProt =  new WhatsProt($number, $userIdent, $nickname, $debug);
             $whatsProt->setChallengeName($nextChallengeFile);

@@ -23,8 +23,8 @@ class WhatsapiMGP25Client implements SMSMessageInterface{
     public function __construct(WhatsProt $whatsProt)
     {
         $this->whatsProt = $whatsProt;
-        $account   = Config::get("whatsapi-laravel::useAccount");
-        $this->password = Config::get("whatsapi-laravel::accounts.$account.password");
+        $account   = Config::get("whatsapilaravel::useAccount");
+        $this->password = Config::get("whatsapilaravel::accounts.$account.password");
     }
 
     public function sendMessage($to, $message)
