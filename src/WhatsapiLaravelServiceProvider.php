@@ -14,7 +14,7 @@ use Tmv\WhatsApi\Event\MessageReceivedEvent;
 use Tmv\WhatsApi\Message\Received;
 use WhatsProt;
 
-class WhatsapiServiceProvider extends ServiceProvider {
+class WhatsapiLaravelServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
