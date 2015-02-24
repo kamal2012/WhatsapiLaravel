@@ -13,7 +13,6 @@ use Tmv\WhatsApi\Service\LocalizationService;
 use Tmv\WhatsApi\Event\MessageReceivedEvent;
 use Tmv\WhatsApi\Message\Received;
 use WhatsProt;
-use Zend\EventManager\Event;
 
 class WhatsapiServiceProvider extends ServiceProvider {
 
@@ -79,7 +78,7 @@ class WhatsapiServiceProvider extends ServiceProvider {
             $debug             = Config::get("whatsapi-laravel::debug");
             $account           = Config::get("whatsapi-laravel::account");
             $number            = Config::get("whatsapi-laravel::accounts.$account.number");
-            $nextChallengeFile = Config::get("whatsapi-laravel::challenge-dir") . "/" . $number . "-NextChallenge.dat";
+            $nextChallengeFile = Config::get("whatsapi-laravel::challenge-dir") . "/" . $number . "-next-challenge.dat";
 
             $identity = App::make('Tmv\WhatsApi\Entity\Identity');
             // Initializing client
