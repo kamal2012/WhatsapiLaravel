@@ -12,7 +12,6 @@ use Tmv\WhatsApi\Service\LocalizationService;
 use Tmv\WhatsApi\Event\MessageReceivedEvent;
 use Tmv\WhatsApi\Message\Received;
 use WhatsProt;
-use Zend\EventManager\Event;
 
 class LaraWhatsapiServiceProvider extends ServiceProvider {
 
